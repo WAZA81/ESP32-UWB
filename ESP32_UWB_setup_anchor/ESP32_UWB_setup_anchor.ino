@@ -38,9 +38,9 @@ const uint8_t BUZZER = 13; // buzzer IO pin
 unsigned long time_now = 0;
 unsigned long time_active = 0;
 bool buzz_is_active = false;
-int soundT[] = {0, 200, 700}; // mute time refer to distance (ms)
-double distTarget[] = {0.3, 0.7, 1.0}; //distance (m)
-// double distTarget[] = {3.0, 4.5, 6.0}; //require (m)
+int soundT[] = {0, 200, 600}; // mute time refer to distance (ms)
+// double distTarget[] = {0.3, 0.7, 1.0}; //test distance (m)
+double distTarget[] = {3.0, 4.5, 6.0}; //require distance (m)
 int activeT = 200; //beep time (ms)
 
 //OLED
