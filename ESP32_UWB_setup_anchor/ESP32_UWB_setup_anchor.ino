@@ -84,7 +84,7 @@ void setup()
   display.setTextColor(SSD1306_WHITE); // Draw white text
   display.setCursor(0, 0);     // Start at top-left corner
 
-  display.println("UWB tag ");
+  display.println("UWB Anchor");
   display.display();
 
   pinMode(BUZZER, OUTPUT);
@@ -109,11 +109,11 @@ void setup()
 
   //start the module as an anchor, do not assign random short address
   DW1000Ranging.startAsAnchor(anchor_addr, DW1000.MODE_LONGDATA_RANGE_LOWPOWER, false);
-  // DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_SHORTDATA_FAST_LOWPOWER);
-  // DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_LONGDATA_FAST_LOWPOWER);
-  // DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_SHORTDATA_FAST_ACCURACY);
-  // DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_LONGDATA_FAST_ACCURACY);
-  // DW1000Ranging.startAsAnchor(ANCHOR_ADD, DW1000.MODE_LONGDATA_RANGE_ACCURACY);
+  // DW1000Ranging.startAsAnchor(anchor_addr, DW1000.MODE_SHORTDATA_FAST_LOWPOWER);
+  // DW1000Ranging.startAsAnchor(anchor_addr, DW1000.MODE_LONGDATA_FAST_LOWPOWER);
+  // DW1000Ranging.startAsAnchor(anchor_addr, DW1000.MODE_SHORTDATA_FAST_ACCURACY);
+  // DW1000Ranging.startAsAnchor(anchor_addr, DW1000.MODE_LONGDATA_FAST_ACCURACY);
+  // DW1000Ranging.startAsAnchor(anchor_addr, DW1000.MODE_LONGDATA_RANGE_ACCURACY);
 }
 
 void loop()
@@ -124,8 +124,8 @@ void loop()
 void newRange()
 {
   //    Serial.print("from: ");
-  Serial.print(DW1000Ranging.getDistantDevice()->getShortAddress(), HEX);
-  Serial.print(", ");
+  // Serial.print(DW1000Ranging.getDistantDevice()->getShortAddress(), HEX);
+  // Serial.print(", ");
   
 #define NUMBER_OF_DISTANCES 1
   float dist = 0.0;
@@ -133,7 +133,7 @@ void newRange()
     dist += DW1000Ranging.getDistantDevice()->getRange();
   }
   dist = dist/NUMBER_OF_DISTANCES;
-  Serial.println(dist);
+  // Serial.println(dist);
 
   // same data displayed on 128x32 OLED
   display.clearDisplay();
@@ -153,7 +153,7 @@ void newRange()
 }
 
 void sendSound(int soundT){
-  Serial.println(soundT);
+  // Serial.println(soundT);
   if(soundT == 0) digitalWrite(BUZZER, LOW);
   else if(!buzz_is_active){
       if(time_now < time_active){

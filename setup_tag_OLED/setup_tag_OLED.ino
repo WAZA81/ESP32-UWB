@@ -70,7 +70,7 @@ void setup()
   display.setTextColor(SSD1306_WHITE); // Draw white text
   display.setCursor(0, 0);     // Start at top-left corner
 
-  display.println("UWB tag ");
+  display.println("UWB Tag");
   display.display();
 
   pinMode(BUZZER, OUTPUT);
@@ -120,9 +120,9 @@ void loop()
 void newRange()
 {
   float dist = DW1000Ranging.getDistantDevice()->getRange();
-  Serial.print(DW1000Ranging.getDistantDevice()->getShortAddress(), HEX);
-  Serial.print(",");
-  Serial.println(dist);
+  // Serial.print(DW1000Ranging.getDistantDevice()->getShortAddress(), HEX);
+  // Serial.print(",");
+  // Serial.println(dist);
 
   // same data displayed on 128x32 OLED
   display.clearDisplay();
@@ -143,7 +143,7 @@ void newRange()
 }
 
 void sendSound(int soundT){
-  Serial.println(soundT);
+  // Serial.println(soundT);
   if(soundT == 0) digitalWrite(BUZZER, LOW);
   else if(!buzz_is_active){
       if(time_now < time_active){
